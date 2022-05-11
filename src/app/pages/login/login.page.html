@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title class="animate__animated animate__bounceInRight">
+      Entrar
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form>
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="text" #email required></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input type="password" #password required></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="primary" (click)="logIn(email, password)" expand="block">Entrar</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="primary" (click)="authService.GoogleAuth()" expand="block">Entrar com Google</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="secondary" (click)="registrar()" expand="block">Criar uma conta</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

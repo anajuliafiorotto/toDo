@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActionSheetController, AlertController } from '@ionic/angular';
 import { TarefaService } from 'src/app/services/tarefa.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ import { TarefaService } from 'src/app/services/tarefa.service';
 export class HomePage {
   tarefaCollection : any[] = [];
 
-  constructor(private alertCtrl : AlertController, private tarefaService : TarefaService, private actionSheetCtrl : ActionSheetController) {}
+  constructor(private alertCtrl : AlertController, private tarefaService : TarefaService, private actionSheetCtrl : ActionSheetController, public router: Router) {}
 
   ionViewDidEnter(){
     this.listarTarefa();
@@ -88,5 +89,9 @@ export class HomePage {
 
     const { role, data } = await alert.onDidDismiss();
     console.log('onDidDismiss resolved with role and data', role, data);
+  }
+
+  sair(){
+    this.router.navigate(['dashboard']);
   }
 }

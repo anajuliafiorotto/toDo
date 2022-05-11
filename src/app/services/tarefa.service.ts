@@ -4,21 +4,21 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TarefaService {
-  tarefaCollection : any[]=[];
+  tarefaCollection: any[]=[];
   key = 'tarefaCollection';
 
   constructor() { }
 
-  salvar(tarefa : any, callback=null){
+  salvar(tarefa: any, callback=null){
     tarefa.feito = false;
-    let value = localStorage.getItem(this.key);
+    const value = localStorage.getItem(this.key);
 
     if(value==null || value==undefined){
       this.tarefaCollection.push(tarefa);
       localStorage.setItem(this.key, JSON.stringify(this.tarefaCollection));
     }
     else {
-      let collection : any[] = JSON.parse(value);
+      const collection: any[] = JSON.parse(value);
       collection.push(tarefa);
       localStorage.setItem(this.key, JSON.stringify(collection));
     }
@@ -29,28 +29,28 @@ export class TarefaService {
   }
 
   listar(){
-    let value = localStorage.getItem(this.key);
+    const value = localStorage.getItem(this.key);
 
     if(value==null || value==undefined){
       return [];
     }
 
-    let collection : any[] = JSON.parse(value);
+    const collection: any[] = JSON.parse(value);
 
     return collection;
   }
 
-  delete(tarefa : any, callback=null){
-    
-    let value = localStorage.getItem(this.key);
+  delete(tarefa: any, callback=null){
+
+    const value = localStorage.getItem(this.key);
 
     if(value==null || value==undefined){
       return;
     }
 
-    let collection : any[] = JSON.parse(value);
+    const collection: any[] = JSON.parse(value);
 
-    let resultCollection = collection.filter(item=>{return item.tarefa != tarefa.tarefa});
+    const resultCollection = collection.filter(item=>item.tarefa != tarefa.tarefa);
 
     localStorage.setItem(this.key, JSON.stringify(resultCollection));
 
@@ -59,20 +59,20 @@ export class TarefaService {
     }
   }
 
-  atualizar(tarefa : any, callback=null){
-    let value = localStorage.getItem(this.key);
+  atualizar(tarefa: any, callback=null){
+    const value = localStorage.getItem(this.key);
 
     if(value==null || value==undefined){
       return;
     }
     else {
-      let collection : any[] = JSON.parse(value);
+      const collection: any[] = JSON.parse(value);
 
       collection.forEach(item=>{
         if(item.tarefa == tarefa.tarefa) {
           item.feito = tarefa.feito;
         }
-      })
+      });
 
       localStorage.setItem(this.key, JSON.stringify(collection));
     }

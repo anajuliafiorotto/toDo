@@ -3,6 +3,9 @@
     <ion-title class="animate__animated animate__bounceInRight">
       Lista de Tarefas
     </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -33,6 +36,12 @@
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="showAdd()" color="secondary" class="animate__animated animate__pulse">
       <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button (click)="sair()" color="danger" class="animate__animated animate__pulse">
+      <ion-icon name="arrow-back"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 </ion-content>
